@@ -3,7 +3,9 @@ package io.realworld.api
 
 import com.example.api.CondiutClient
 import kotlinx.coroutines.runBlocking
+import models.entities.LoginData
 import models.entities.UserCreds
+import models.requests.LoginRequest
 import models.requests.SignUPRequest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -21,6 +23,26 @@ class ConduitClientTest {
         }
 
 
+    }
+    @Test
+    fun `POST login user`(){
+        val loginData = LoginData(
+                "vansh@gmail.com",
+                "1234567890",
+
+        )
+        runBlocking {
+            val resp = conduitClient.api.loginUser(LoginRequest(loginData))
+            assertEquals(loginData.email, resp.body()?.user?.email)
+        }
+    }
+
+    @Test
+    fun `GET tags`(){
+        runBlocking {
+            val tags = conduitClient.api.getTags()
+            assertNotNull(tags.body()?.tags)
+        }
     }
     @Test
     fun `GET articles by author `(){
