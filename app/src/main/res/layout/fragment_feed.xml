@@ -4,7 +4,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/background"
+
         android:id="@+id/feedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
