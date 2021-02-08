@@ -9,9 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.condiut.databinding.FragmentFeedBinding
 
-
-
-class GlobalFeedFragment : Fragment() {
+class MyFeedFragment: Fragment() {
     private var _binding: FragmentFeedBinding? = null
     private lateinit var viewModel: FeedViewModel
     private lateinit var feedAdapter: ArticleFeedAdapter
@@ -30,7 +28,7 @@ class GlobalFeedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.fetchGlobalFeed()
+        viewModel.fetchMyFeed()
         viewModel.feed.observe({lifecycle}){
             feedAdapter.submitList(it)
         }

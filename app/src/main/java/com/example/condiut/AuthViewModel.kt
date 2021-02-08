@@ -8,15 +8,21 @@ import com.example.condiut.data.UserRepo
 import kotlinx.coroutines.launch
 import models.entities.User
 
-class AuthViewModel: ViewModel() {
+class AuthViewModel : ViewModel() {
 
     private val _user = MutableLiveData<User>()
 
     val user: LiveData<User?> = _user
 
-    fun login(email:String, password:String)= viewModelScope.launch {
+    fun login(email: String, password: String) = viewModelScope.launch {
         UserRepo.login(email, password)?.let {
             _user.postValue(it.user)
         }
+    }
+
+    fun signUp(username: String, email: String, password: String) = viewModelScope.launch {
+            UserRepo.signup(username,email,password)?.let {
+                _user.postValue(it)
+            }
     }
 }

@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.condiut.AuthViewModel
-import com.example.condiut.databinding.LoginFramentBinding
+import com.example.condiut.databinding.LoginSignupFramentBinding
 
 class LoginFragment: Fragment() {
-    private var _binding: LoginFramentBinding?=null
+    private var _binding: LoginSignupFramentBinding?=null
      val authViewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -18,8 +19,8 @@ class LoginFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = LoginFramentBinding.inflate(inflater, container,false)
-
+        _binding = LoginSignupFramentBinding.inflate(inflater, container,false)
+        _binding?.usernameEditText?.isVisible=false
         return _binding?.root
     }
 

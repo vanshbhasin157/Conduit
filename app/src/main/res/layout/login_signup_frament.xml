@@ -7,6 +7,14 @@
     android:layout_width="wrap_content" android:layout_height="wrap_content">
 
     <EditText
+        android:id="@+id/usernameEditText"
+        android:ems="15"
+        android:hint="Username"
+        android:inputType="text"
+        android:textAlignment="textStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <EditText
         android:id="@+id/emailEditText"
         android:ems="15"
         android:hint="Email"
@@ -26,7 +34,7 @@
         android:layout_height="wrap_content"/>
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
-        android:text="Login"
+        android:text="Submit"
         android:layout_marginTop="10dp"
         android:id="@+id/loginButton"
         android:layout_height="wrap_content"/>

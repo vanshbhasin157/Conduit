@@ -7,7 +7,11 @@
         <item
             android:id="@+id/nav_feed"
             android:icon="@drawable/round_list_black_24dp"
-            android:title="Feed" />
+            android:title="Global Feed" />
+        <item
+            android:id="@+id/nav_my_feed"
+            android:icon="@drawable/baseline_list_alt_black_24dp"
+            android:title="My Feed" />
 
 
     </group>
