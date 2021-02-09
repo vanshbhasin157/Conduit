@@ -12,7 +12,7 @@ import com.example.condiut.R
 import com.example.condiut.databinding.ListItemArticlesBinding
 import models.entities.Article
 
-class ArticleFeedAdapter: ListAdapter<Article, ArticleFeedAdapter.articleViewHolder>(
+class ArticleFeedAdapter(val onArticleClicked: (slug:String) -> Unit ): ListAdapter<Article, ArticleFeedAdapter.articleViewHolder>(
 object :DiffUtil.ItemCallback<Article>() {
     override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem == newItem
@@ -23,6 +23,8 @@ object :DiffUtil.ItemCallback<Article>() {
     }
 }
 ) {
+
+
 
 
     inner class articleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){}
@@ -47,6 +49,8 @@ object :DiffUtil.ItemCallback<Article>() {
             articleBodyTextView.text = article.body
             dateTextView.text = article.createdAt.toString()
             imageView2.background = ColorDrawable(Color.GRAY)
+
+            root.setOnClickListener { onArticleClicked(article.slug) }
         }
     }
 }
