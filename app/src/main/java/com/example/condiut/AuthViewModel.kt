@@ -25,4 +25,17 @@ class AuthViewModel : ViewModel() {
                 _user.postValue(it)
             }
     }
+
+    fun update(
+        bio: String?,
+        username: String?,
+        email: String?,
+        password: String?,
+        imgUrl: String?
+
+    )= viewModelScope.launch {
+        UserRepo.update(bio,username,email,password,imgUrl)?.let {
+            _user.postValue(it)
+        }
+    }
 }

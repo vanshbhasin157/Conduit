@@ -6,6 +6,7 @@ import models.entities.User
 import models.entities.UserCreds
 import models.requests.LoginRequest
 import models.requests.SignUPRequest
+import models.requests.UpdateUserRequest
 import models.responses.userResponse
 
 object UserRepo {
@@ -23,6 +24,17 @@ object UserRepo {
         val resp = api.registerUser(SignUPRequest(UserCreds(email,password,username)))
         CondiutClient.authToken = resp.body()?.user?.token
         return resp?.body()?.user
+    }
+
+    suspend fun update(
+        bio: String?,
+        username: String?,
+        email: String?,
+        password: String?,
+        imgUrl: String?
+    ): User? {
+        val resp = authApi.updateCurrentUser(UpdateUserRequest(models.User(bio,email,imgUrl,username,password)))
+        return resp.body()?.user
     }
 
 
