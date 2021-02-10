@@ -34,11 +34,14 @@ class MyFeedFragment : Fragment() {
     }
 
     fun openArticle(articleId: String) {
-        findNavController().navigate(R.id.action_nav_Globalfeed_to_nav_article,
+        findNavController().navigate(R.id.action_nav_my_feed_to_nav_article,
             bundleOf(
                 resources.getString(R.string.arg_article_id) to articleId
             )
         )
+    }
+    private fun openCreateArticleFragment(){
+        findNavController().navigate(R.id.nav_create_article)
     }
 
 
@@ -47,6 +50,9 @@ class MyFeedFragment : Fragment() {
         viewModel.fetchMyFeed()
         viewModel.feed.observe({ lifecycle }) {
             feedAdapter.submitList(it)
+        }
+        _binding?.addArticleFAB?.setOnClickListener {
+            openCreateArticleFragment()
         }
     }
 

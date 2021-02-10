@@ -19,6 +19,12 @@ object UserRepo {
         return resp.body()
     }
 
+    suspend fun getCurrentUser(token:String): User? {
+        CondiutClient.authToken = token
+        return authApi.getCurrentUser().body()?.user
+    }
+
+
 
     suspend fun signup(username:String, email: String,password: String): User? {
         val resp = api.registerUser(SignUPRequest(UserCreds(email,password,username)))

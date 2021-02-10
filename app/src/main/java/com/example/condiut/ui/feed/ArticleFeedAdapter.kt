@@ -1,7 +1,5 @@
 package com.example.condiut.ui.feed
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.condiut.R
 import com.example.condiut.databinding.ListItemArticlesBinding
+import com.example.condiut.extensions.loadImage
+import com.example.condiut.extensions.timeStamp
 import models.entities.Article
 
 class ArticleFeedAdapter(val onArticleClicked: (slug:String) -> Unit ): ListAdapter<Article, ArticleFeedAdapter.articleViewHolder>(
@@ -47,8 +47,8 @@ object :DiffUtil.ItemCallback<Article>() {
             authorTextView.text = article.author.username
             titleTextView.text = article.title
             articleBodyTextView.text = article.body
-            dateTextView.text = article.createdAt.toString()
-            imageView2.background = ColorDrawable(Color.GRAY)
+            dateTextView.timeStamp = article.createdAt
+            imageView2.loadImage(article.author.image,true)
 
             root.setOnClickListener { onArticleClicked(article.slug) }
         }

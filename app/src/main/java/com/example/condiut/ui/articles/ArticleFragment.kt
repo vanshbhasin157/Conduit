@@ -1,14 +1,14 @@
 package com.example.condiut.ui.articles
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.condiut.R
 import com.example.condiut.databinding.ArticleFragmentBinding
+import com.example.condiut.extensions.loadImage
+import com.example.condiut.extensions.timeStamp
 
 class ArticleFragment : Fragment() {
 
@@ -43,8 +43,9 @@ class ArticleFragment : Fragment() {
             _binding?.apply {
                 titleTextView.text = it.title
                 authorTextView.text = it.author.username
-                dateTextView.text = it.updatedAt
+                dateTextView.timeStamp = it.createdAt
                 bodyTextView.text = it.body
+                avatarImageView.loadImage(it.author.image,true)
 
             }
         }

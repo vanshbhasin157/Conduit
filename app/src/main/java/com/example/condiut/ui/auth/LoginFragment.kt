@@ -32,6 +32,7 @@ class LoginFragment: Fragment() {
                     emailEditText.text.toString(),
                     passwordEditText.text.toString()
                 )
+
             }
         }
 

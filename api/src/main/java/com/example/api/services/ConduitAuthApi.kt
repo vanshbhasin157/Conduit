@@ -1,5 +1,6 @@
 package com.example.api.services
 
+import models.requests.CreateArticleRequest
 import models.requests.UpdateUserRequest
 import models.responses.MultipleArticleResponse
 import models.responses.articleResponse
@@ -9,6 +10,12 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ConduitAuthApi {
+
+    @POST("articles")
+    suspend fun createArticles(
+        @Body ArticleData:CreateArticleRequest
+    ):Response<articleResponse>
+
 
     @GET("user")
     suspend fun getCurrentUser():Response<userResponse>
